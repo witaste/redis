@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<context:annotation-config />
+	<util:properties id="config" location="classpath:config.properties" />
+
+	<bean class="redis.clients.jedis.JedisCluster">
+		<constructor-arg>
+			<set>
+				<ref bean="node1" />
+				<ref bean="node2" />
+				<ref bean="node3" />
+				<ref bean="node4" />
+				<ref bean="node5" />
+				<ref bean="node6" />
+				<ref bean="node7" />
+				<ref bean="node8" />
+				<ref bean="node9" />
+			</set>
+		</constructor-arg>
+	</bean>
+
+	<bean id="node1" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="#{config['redis.host1']}"></constructor-arg>
+		<constructor-arg name="port" value="#{config['redis.port1']}"></constructor-arg>
+	</bean>
+	<bean id="node2" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="#{config['redis.host2']}"></constructor-arg>
+		<constructor-arg name="port" value="#{config['redis.port2']}"></constructor-arg>
+	</bean>
+	<bean id="node3" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="#{config['redis.host3']}"></constructor-arg>
+		<constructor-arg name="port" value="#{config['redis.port3']}"></constructor-arg>
+	</bean>
+	<bean id="node4" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="#{config['redis.host4']}"></constructor-arg>
+		<constructor-arg name="port" value="#{config['redis.port4']}"></constructor-arg>
+	</bean>
+	<bean id="node5" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="#{config['redis.host5']}"></constructor-arg>
+		<constructor-arg name="port" value="#{config['redis.port5']}"></constructor-arg>
+	</bean>
+	<bean id="node6" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="#{config['redis.host6']}"></constructor-arg>
+		<constructor-arg name="port" value="#{config['redis.port6']}"></constructor-arg>
+	</bean>
+	<bean id="node7" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="#{config['redis.host7']}"></constructor-arg>
+		<constructor-arg name="port" value="#{config['redis.port7']}"></constructor-arg>
+	</bean>
+	<bean id="node8" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="#{config['redis.host8']}"></constructor-arg>
+		<constructor-arg name="port" value="#{config['redis.port8']}"></constructor-arg>
+	</bean>
+	<bean id="node9" class="redis.clients.jedis.HostAndPort">
+		<constructor-arg name="host" value="#{config['redis.host9']}"></constructor-arg>
+		<constructor-arg name="port" value="#{config['redis.port9']}"></constructor-arg>
+	</bean>
+</beans>
